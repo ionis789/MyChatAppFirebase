@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class LoginVC: UIViewController {
 
 
@@ -157,6 +157,15 @@ class LoginVC: UIViewController {
             return }
         print("Email: \(email)\nPassword: \(password)")
 
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Error ocured trying to login: \(error.localizedDescription)")
+                return
+            }
+
+
+            print("User logged in")
+        }
     }
 
     // When user tap register button push RegisterVC on the screen

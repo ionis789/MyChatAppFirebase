@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterVC: UIViewController {
 
@@ -166,6 +167,17 @@ class RegisterVC: UIViewController {
             return
         }
         print("Name: \(name)\nEmail: \(email)\nPassword: \(password)")
+
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Failed to create user: \(error.localizedDescription)")
+                return
+            }
+
+            let user = result?.user
+            print("Created user: \(user?.email ?? "No Email"), \(user?.uid ?? "No UID")")
+        }
+
     }
 }
 

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -20,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = ConversationsVC()
         window?.makeKeyAndVisible()
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
